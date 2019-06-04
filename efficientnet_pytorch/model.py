@@ -154,7 +154,8 @@ class EfficientNet(nn.Module):
         x = relu_fn(self._bn0(self._conv_stem(inputs)))
 
         # Blocks
-        for idx, block in enumerate(self._blocks):
+        print(len(self._blocks))
+        for idx, block in enumerate(self._blocks[:-8]):
             drop_connect_rate = self._global_params.drop_connect_rate
             if drop_connect_rate:
                 drop_connect_rate *= float(idx) / len(self._blocks)
